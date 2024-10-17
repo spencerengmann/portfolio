@@ -144,6 +144,7 @@ button:hover {
 /* Project Grid */
 .project-grid {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -154,8 +155,9 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px;
-    margin: 20px;
+    justify-content: center;
+
+    margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -257,7 +259,9 @@ button:hover {
     }
 
     .project-grid {
-        display: block;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2em;
     }
 
     .project-card {
