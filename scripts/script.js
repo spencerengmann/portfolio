@@ -1,27 +1,35 @@
-// script.js
+const buttonShow = document.querySelector('.menu-showing');
+const buttonHide = document.querySelector('.menu-hide');
+const navMenu = document.querySelector('.navbar');
 
-// Scroll Animation: Add animation class when an element enters the viewport
-const sections = document.querySelectorAll('section');
-window.addEventListener('scroll', () => {
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight - 100) {
-            section.classList.add('animate');
-        }
-    });
-});
 
-// Modal for project details (example for one project)
-const modal = document.createElement('div');
-modal.classList.add('modal');
-document.body.appendChild(modal);
+buttonHide.addEventListener('click', hideMenu);
+buttonShow.addEventListener('click', showMenu);
 
-// Event listener to show/hide modal
-document.querySelector('.project-card').addEventListener('click', () => {
-    modal.innerHTML = '<h3>Project 1 Details</h3><p>This is a detailed description of the project.</p>';
-    modal.classList.add('active');
-});
+function showMenu() {
+    navMenu.style.display = 'block';
+    buttonShow.style.display = 'none';
+    buttonHide.style.display = 'block';
+}
 
-modal.addEventListener('click', () => {
-    modal.classList.remove('active');
-});
+function hideMenu() {
+    navMenu.style.display = 'none';
+    buttonHide.style.display = 'none';
+    buttonShow.style.display = 'block';
+}
+
+function handleResize() {
+    if (window.innerWidth > 1000) {
+        navMenu.style.display = "flex";
+        buttonShow.style.display = "none";
+        buttonHide.style.display = "none";  
+    } else {
+        navMenu.style.display = "none";  
+        buttonShow.style.display = "block";
+        buttonHide.style.display = "none";  
+    }
+}
+
+
+window.addEventListener("resize", handleResize);
+handleResize();
